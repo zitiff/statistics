@@ -5,11 +5,12 @@
 
 int main() {
 
-	const size_t statistics_count = 2;
+	const size_t statistics_count = 3;
 	IStatistics *statistics[statistics_count];
 
 	statistics[0] = new Min{};
 	statistics[1] = new Max{};
+	statistics[2] = new Mean{};
 
 	double val = 0;
 	while (std::cin >> val) {

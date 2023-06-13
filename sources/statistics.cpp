@@ -30,3 +30,18 @@ double Max::eval() const {
 const char* Max::name() const {
 	return "max";
 }
+
+void Mean::update(double next) {
+
+	sum += next;
+	count++;
+	m_mean = sum/count;
+}
+
+double Mean::eval() const {
+	return m_mean;
+}
+
+const char* Mean::name() const {
+	return "mean";
+}

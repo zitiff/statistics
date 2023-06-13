@@ -46,3 +46,25 @@ private:
 
 	double m_max;
 };
+
+class Mean : public IStatistics {
+
+public:
+
+	Mean::Mean() : m_mean{ std::numeric_limits<double>::min() } {
+	}
+
+	void update(double next) override;
+
+	double eval() const override;
+
+	const char* name() const override;
+
+private:
+
+	double m_mean;
+
+	double sum = 0;
+
+	int count = 0;
+};
