@@ -68,3 +68,29 @@ private:
 
 	int count = 0;
 };
+
+
+class Std : public IStatistics {
+
+public:
+
+	Std::Std() : m_std{ std::numeric_limits<double>::min() } {
+	}
+
+	void update(double next) override;
+
+	double eval() const override;
+
+	const char* name() const override;
+
+private:
+	double m_mean;
+
+	double m_std;
+
+	double sum = 0;
+
+	double sum_dif = 0;
+
+	int count = 0;
+};

@@ -1,6 +1,7 @@
 #include "../statistics.h"
 #include <iostream>
 #include <limits>
+#include <cmath>
 #pragma once
 
 void Min::update(double next) {
@@ -44,4 +45,21 @@ double Mean::eval() const {
 
 const char* Mean::name() const {
 	return "mean";
+}
+
+void Std::update(double next) {
+
+	sum += next;
+	count++;
+	m_mean = sum / count;
+	sum_dif += pow((next - m_mean),2);
+	m_std = sqrt(sum_dif / (count - 1));
+}
+
+double Std::eval() const {
+	return m_std;
+}
+
+const char* Std::name() const {
+	return "std";
 }
