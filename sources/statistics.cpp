@@ -2,6 +2,7 @@
 #include <iostream>
 #include <limits>
 #include <cmath>
+#include <algorithm>
 #pragma once
 
 void Min::update(double next) {
@@ -62,4 +63,26 @@ double Std::eval() const {
 
 const char* Std::name() const {
 	return "std";
+}
+
+
+void Pct90::update(double next) {
+	data.push_back(next);
+}
+
+double Pct90::eval() const {
+	std::vector<double> sortedData = data;
+	std::sort(sortedData.begin(), sortedData.end());
+	int index = ((sortedData.size() - 1) * 0.9);
+	if (index == sortedData.size() - 1) {
+		return sortedData.back();
+	}
+	else {
+		double fraction = (sortedData.size() - 1) * 0.9 - index;
+		return (1 - fraction) * sortedData[index] + fraction * sortedData[index + 1];
+	}
+}
+
+const char* Pct90::name() const {
+	return "pct90";
 }

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+#include <vector>
 
 class IStatistics {
 public:
@@ -93,4 +94,22 @@ private:
 	double sum_dif = 0;
 
 	int count = 0;
+};
+
+class  Pct90 : public IStatistics {
+
+public:
+
+	Pct90::Pct90() : m_pct90{std::numeric_limits<double>::min() } {
+	}
+
+	void update(double next) override;
+
+	double eval() const override;
+
+	const char* name() const override;
+
+private:
+	std::vector<double> data;
+	double m_pct90 = 0;
 };
