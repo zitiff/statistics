@@ -86,3 +86,24 @@ double Pct90::eval() const {
 const char* Pct90::name() const {
 	return "pct90";
 }
+
+void Pct95::update(double next) {
+	data.push_back(next);
+}
+
+double Pct95::eval() const {
+	std::vector<double> sortedData = data;
+	std::sort(sortedData.begin(), sortedData.end());
+	size_t index = static_cast<size_t>((sortedData.size() - 1) * 0.95);
+	if (index == sortedData.size() - 1) {
+		return sortedData.back();
+	}
+	else {
+		double fraction = (sortedData.size() - 1) * 0.95 - index;
+		return (1 - fraction) * sortedData[index] + fraction * sortedData[index + 1];
+	}
+}
+
+const char* Pct95::name() const {
+	return "pct95";
+}

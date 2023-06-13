@@ -100,9 +100,6 @@ class  Pct90 : public IStatistics {
 
 public:
 
-	Pct90::Pct90() : m_pct90{std::numeric_limits<double>::min() } {
-	}
-
 	void update(double next) override;
 
 	double eval() const override;
@@ -111,5 +108,19 @@ public:
 
 private:
 	std::vector<double> data;
-	double m_pct90 = 0;
+};
+
+class  Pct95 : public IStatistics {
+
+public:
+
+	void update(double next) override;
+
+	double eval() const override;
+
+	const char* name() const override;
+
+private:
+
+	std::vector<double> data;
 };
