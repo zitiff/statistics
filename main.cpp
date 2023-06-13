@@ -1,15 +1,15 @@
 #include <iostream>
 #include <limits>
-
-#include "headers/min.h"
+#include "statistics.h"
 #pragma once
 
 int main() {
 
-	const size_t statistics_count = 1;
+	const size_t statistics_count = 2;
 	IStatistics *statistics[statistics_count];
 
 	statistics[0] = new Min{};
+	statistics[1] = new Max{};
 
 	double val = 0;
 	while (std::cin >> val) {
