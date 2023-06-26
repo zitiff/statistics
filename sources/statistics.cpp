@@ -49,12 +49,16 @@ const char* Mean::name() const {
 }
 
 void Std::update(double next) {
-
 	sum += next;
 	count++;
+	nums.push_back(next);
 	m_mean = sum / count;
-	sum_dif += pow((next - m_mean),2);
-	m_std = sqrt(sum_dif / (count - 1));
+	sum_dif = 0;
+	for (int i = 0; i < count; i++) 
+	{		
+		sum_dif += pow((nums[i] - m_mean), 2);		
+	}
+	m_std = sqrt(sum_dif/count);	
 }
 
 double Std::eval() const {

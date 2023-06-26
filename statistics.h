@@ -85,6 +85,9 @@ public:
 	const char* name() const override;
 
 private:
+
+	std::vector<double> nums;
+
 	double m_mean;
 
 	double m_std;
