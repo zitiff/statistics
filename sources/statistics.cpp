@@ -37,11 +37,10 @@ void Mean::update(double next) {
 
 	sum += next;
 	count++;
-	m_mean = sum/count;
 }
 
 double Mean::eval() const {
-	return m_mean;
+	return sum/count;
 }
 
 const char* Mean::name() const {
