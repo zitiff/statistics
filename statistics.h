@@ -15,7 +15,7 @@ class Min : public IStatistics {
 
 public:
 
-	Min::Min() : m_min{ std::numeric_limits<double>::max() } {
+	inline Min() : m_min{ std::numeric_limits<double>::max() } {
 	}
 
 	void update(double next) override;
@@ -34,7 +34,7 @@ class Max : public IStatistics {
 
 public:
 
-	Max() : m_max{ std::numeric_limits<double>::lowest() } {
+	inline Max() : m_max{ std::numeric_limits<double>::lowest() } {
 	}
 
 	void update(double next) override;
@@ -52,7 +52,7 @@ class Mean : public IStatistics {
 
 public:
 
-	Mean() : m_mean{ std::numeric_limits<double>::lowest() } {
+	inline Mean() : m_mean{ std::numeric_limits<double>::lowest() } {
 	}
 
 	void update(double next) override;
@@ -75,7 +75,7 @@ class Std : public IStatistics {
 
 public:
 
-	Std() : m_std{ std::numeric_limits<double>::lowest() } {
+	inline Std() : m_std{ std::numeric_limits<double>::lowest() } {
 	}
 
 	void update(double next) override;
