@@ -5,7 +5,7 @@
 class IStatistics {
 public:
 	virtual ~IStatistics() {}
-
+	
 	virtual void update(double next) = 0;
 	virtual double eval() const = 0;
 	virtual const char * name() const = 0;
@@ -34,7 +34,7 @@ class Max : public IStatistics {
 
 public:
 
-	Max::Max() : m_max{ std::numeric_limits<double>::min() } {
+	Max() : m_max{ std::numeric_limits<double>::lowest() } {
 	}
 
 	void update(double next) override;
@@ -52,7 +52,7 @@ class Mean : public IStatistics {
 
 public:
 
-	Mean::Mean() : m_mean{ std::numeric_limits<double>::min() } {
+	Mean() : m_mean{ std::numeric_limits<double>::lowest() } {
 	}
 
 	void update(double next) override;
@@ -75,7 +75,7 @@ class Std : public IStatistics {
 
 public:
 
-	Std::Std() : m_std{ std::numeric_limits<double>::min() } {
+	Std() : m_std{ std::numeric_limits<double>::lowest() } {
 	}
 
 	void update(double next) override;
